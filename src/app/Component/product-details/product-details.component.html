@@ -1,0 +1,26 @@
+
+
+@if(product!=undefined){
+
+  <div class="row m-5 text-light">
+    <div class="col-md-5 ">
+      <img [src]="product.PrdimgURL" alt="samam" class="img-fluid">
+    </div>
+    <div class="col-md-7">
+      <p class="h1"> {{product.name}}</p>
+      <p  class="h1"> Material : {{product.Material}}</p>
+      <p class="h1"> quantity :{{product.quantity}}</p>
+      <p class="h1">price : {{product.price}}</p>
+      <p class="h1">details {{product.details}}</p>
+    </div>
+  </div>
+}
+
+
+<div class="btns row">
+<button class="col-3" (click)="PrevuesPrd()" > Prev
+</button>
+
+<button class="col-3"  (click)="nextPrd()" [disabled]="currentProductID == IDs[IDs.length - 1]"> Next
+</button>
+</div>

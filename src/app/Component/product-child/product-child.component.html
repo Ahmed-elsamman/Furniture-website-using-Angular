@@ -1,0 +1,64 @@
+<main>
+  <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <!-- <div class="container justify-content-center">
+
+      <div class="row">
+
+         <div class="col-md-8">
+
+             <div class="input-group mb-3">
+    <div class="row mb-3">
+      <label for="" class="col-sm-3 form-label text-light">Filter by name: </label>
+      <input type="text" class="form-control " [(ngModel)]="getPrice">
+    </div>
+
+    </div>
+
+         </div>
+
+      </div>
+
+
+    </div> -->
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+
+      @for (product of productsAfterFilter; track product.id) {
+
+
+
+      <div class="col-4 " Boxshadow [routerLink]="['/prd',product.id]"  >
+        <div class="card h-100 shadow-sm  border-0 rounded-3">
+
+          <img [src]="product.PrdimgURL" alt="" class="img-card img-fluid " Boxshadow>
+
+          <div class="card-body">
+
+            <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary">{{product.name|uppercase}}</span>
+
+            </div>
+            @switch (product.quantity) {
+            @case (0) {<small class="bg-danger d-block"><i class="far fa-clock"></i> Out oF Stoke </small>}
+            @case (1) {<small class="bg-info"><i class="far fa-clock"></i> Last item Left !! </small>}
+            @default {<small class="bg-success-subtle d-block"><i class="far fa-clock"></i> <span class="h5">{{product.quantity}}</span> in
+              Stoke </small>}
+            }
+            <p class="h5"> Disc : {{product.price|calcDiscount:30 }} 20%</p>
+            <p class="h5 text-decoration-line-through"> Price : {{product.price|currency:'EGP' }}</p>
+
+            <div class="text-center my-4">
+
+              <!-- <button class="btn btn-warning my-1" [disabled]="product.quantity==0" (click)="changeIgm(product)">Show / Hide </button> -->
+              <button class="btn btn-warning my-1" [disabled]="product.quantity==0" (click)="decreaseQuantity(product)" (click)="addToCart(product)">Add To Cart </button>
+
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      }
+
+    </div>
+  </div>
+</main>
